@@ -8,11 +8,14 @@ const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
   const { context } = github;
 const { owner, repo } = context.repo;
 
+console.log(octokit.GITHUB_TOKEN)
 console.log(owner, repo)
 
 const docPath = core.getInput('path', { required: true });
 const encoding = core.getInput('encoding', { required: true });
 
+console.log(docPath)
+console.log(encoding)
 
 var analyzeData = {}
 var recommendData = {}
