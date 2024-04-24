@@ -1,0 +1,22 @@
+name: 'Enovade DevOps Symphony Agile GitHub Action'
+description: 'Generating Agile - Epic, User Stories & Tasks from Functional Specification'
+author: 'Hanafiah <hanafiah@enovade.com>'
+inputs:
+  path:
+    description: 'Functional Specification file'
+    required: true
+  encoding:
+    description: 'File encoding'
+    default: 'utf8'
+    required: true
+outputs:
+  jawapan: 
+    description: 'Successfully generated Agile - Epic, User Stories & Tasks'
+    
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+
+branding:
+  color: 'blue'
+  icon: 'activity'
