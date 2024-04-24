@@ -2,6 +2,7 @@ const axios = require('axios');
 const core = require('@actions/core');
 const github = require('@actions/github');
 
+//const time = (new Date()).toTimeString();
 
 const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
   const { context } = github;
@@ -10,7 +11,7 @@ const { owner, repo } = context.repo;
 console.log(owner, repo)
 
 const docPath = core.getInput('path', { required: true });
-const encoding = core.encoding('encoding', { required: true });
+const encoding = core.getInput('encoding', { required: true });
 
 
 var analyzeData = {}
