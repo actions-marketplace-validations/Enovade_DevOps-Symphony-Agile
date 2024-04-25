@@ -5,6 +5,9 @@ inputs:
   agileURL:
     description: 'Endpoints for Agile API'
     required: true
+  uid:
+    description: 'User ID'
+    required: true
   result:
     description: 'Result file'
     required: true
