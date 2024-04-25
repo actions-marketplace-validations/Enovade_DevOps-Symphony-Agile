@@ -37786,18 +37786,20 @@ var __webpack_exports__ = {};
 const axios = __nccwpck_require__(515);
 const core = __nccwpck_require__(8864);
 const github = __nccwpck_require__(6366);
-
-//const time = (new Date()).toTimeString();
-
-// const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
-const { context } = github;
-const { owner, repo } = context.repo;
-
-//console.log(octokit.GITHUB_TOKEN)
-console.log(owner, repo)
+const {Octokit} = __nccwpck_require__(4013);
 
 const agileURL = core.getInput('agileURL', { required: true });
 const mymd = core.getInput('result', { required: true });
+const mytoken = core.getInput('uid', { required: true });
+
+const octokit = new Octokit({
+  auth: mytoken,
+});
+
+const { context } = github;
+const { owner, repo } = context.repo;
+
+console.log(owner, repo)
 
 console.log(mymd)
 
@@ -37811,15 +37813,28 @@ var resultData = ""
 .then(res => {
     if (res.status === 200) {
         const agileData = res.data.text
-        console.log("-------------------------------------------------")
+        console.log("----------------Agile Data--------------------")
         console.log(agileData)
-        console.log("-------------------------------------------------\n")
+        createIssue();
         core.setOutput('jawapan', "Successfully create tasks");
     }
 })
 .catch(err => {
     console.error(err); 
 })
+
+
+async function createIssue() {
+    const { data } = await octokit.request("POST /repos/Enovade/test-agile/issues", {
+      owner: "Enovade",
+      repo: "test-agile",
+      title: "Issue Title",
+      body: "Description of the issue.",
+      labels: ["bug"],
+      assignees: ["hanafiah-enovade"],
+    });
+    console.log(data);
+  }
 })();
 
 module.exports = __webpack_exports__;
