@@ -37789,15 +37789,14 @@ const github = __nccwpck_require__(6366);
 
 //const time = (new Date()).toTimeString();
 
-const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
-  const { context } = github;
+// const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+const { context } = github;
 const { owner, repo } = context.repo;
 
-console.log(octokit.GITHUB_TOKEN)
+//console.log(octokit.GITHUB_TOKEN)
 console.log(owner, repo)
 
 const agileURL = core.getInput('agileURL', { required: true });
-
 const mymd = core.getInput('result', { required: true });
 
 console.log(mymd)
