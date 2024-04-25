@@ -17,5 +17,5 @@ runs:
   main: 'dist/index.js'
 
 branding:
-  color: 'teal'
+  color: 'orange'
   icon: 'repeat'
